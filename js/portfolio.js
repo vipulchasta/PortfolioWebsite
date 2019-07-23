@@ -11,6 +11,7 @@ function loadPortfolio() {
 			portfolioData = JSON.parse(this.responseText);
 			window.document.title = portfolioData.title;
 			updatePortfolioRow();
+                        loadFrameworkImageLinks();
 		}
 	}
 
