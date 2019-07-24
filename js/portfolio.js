@@ -1,4 +1,4 @@
-var JSON_DATA_LINK = "https://api.jsonbin.io/b/5d387aa271e1da4952dc741b";
+var JSON_DATA_LINK = "https://api.jsonbin.io/b/5d387aa271e1da4952dc741b/latest";
 var portfolioData = null;
 
 function loadPortfolio() {
