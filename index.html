@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Portfolio by Vipul Chasta">
     <meta name="author" content="VChasta">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
     <title>Portfolio</title>
 
@@ -12,6 +13,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/portfolio.css">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
@@ -36,43 +39,98 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="/">BullTronics</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data/data.json">Portfolio JSON</a>
-            </li>
-          </ul>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Want to show your project on a github hosted website? 
+              Visit https://jsonbin.io and create your portfolio Public JSON and add your JSON link to portfolio.js file, which is provided with this Portfolio project.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://twitter.com/vipulchasta" class="text-white">Follow on Twitter</a></li>
+                <li><a href="https://facebook.com/vipulchasta" class="text-white">Like on Facebook</a></li>
+                <li><a href="mail:chasta.vipul@gmail.com" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </nav>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Portfolio</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
     </header>
 
-    <main role="main" style="padding-top: 100px;">
+    <main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Project Portfolio</h1>
+          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+          <p>
+            <a href="#rj_portfolio_row" class="btn btn-primary my-2">View Portfolio</a>
+            <a href="https://Github.com/vipulchasta/BullTronics" class="btn btn-secondary my-2">Browse Source</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="exampleModalBody" style="size: 6px; font-family: 'Times New Roman', Times, serif;">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a id="exampleModalLink" href="#" style="text-decoration: none;"><button type="button" class="btn btn-primary">Experience It</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Wrap the rest of the page in another container to center all the content. -->
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <!-- Three columns of text below the carousel -->
+          <div id="rj_portfolio_row" class="row">
 
-      <div class="container">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="img img-responsive" src="/img/loading.gif" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">Loading...</p>
+                </div>
+              </div>
+            </div>
 
-        <!-- Three columns of text below the carousel -->
-        <div id="rj_portfolio_row" class="row">
-
-
-        </div><!-- /.row -->
-
-      </div><!-- /.container -->
-
-
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </div>
       <!-- FOOTER -->
-      <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>Author: Vipul Chasta</p>
+      <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>Portfolio Template &copy; BullTronics, you can clone/fork it and customize it for yourself!</p>
+          <p>BullTronics Portfolio <a href="https://Github.com/vipulchasta/BullTronics">GitHub</a></p>
+        </div>
       </footer>
     </main>
 
