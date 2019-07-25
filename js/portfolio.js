@@ -1,4 +1,5 @@
 var JSON_DATA_LINK = "https://api.jsonbin.io/b/5d3878db8ba2253fc3a29706/latest";
+var JSON_DATA_API_KEY = "$2a$10$Czs941C24iIp1xHGnweHN.6yQxfndYyrw3bZCQFQzM.COGSeDkdTi";
 var portfolioData = null;
 
 function loadPortfolio() {
@@ -10,22 +11,23 @@ function loadPortfolio() {
 		if (this.readyState === 4 && this.status === 200) {
 
 			portfolioData = JSON.parse(this.responseText);
-			window.document.title = portfolioData.title;
 			updatePortfolioRow();
 		}
 	}
 
 	xhttp.open("GET", JSON_DATA_LINK, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.setRequestHeader("secret-key", "$2a$10$Czs941C24iIp1xHGnweHN.6yQxfndYyrw3bZCQFQzM.COGSeDkdTi");
+	xhttp.setRequestHeader("secret-key", JSON_DATA_API_KEY);
 	xhttp.send();
 }
 
 function onHoverOutCallback(e) {
 	e.setAttribute("style", "");
+	portfolioHighliterInit();
 }
 
 function onHoverInCallback(e) {
+	portfolioHighliterClose();
 	e.setAttribute("style", "background-color:rgba(255,0,0,0.3);");
 }
 
@@ -42,46 +44,104 @@ function onClickCallback(indexPortfolio) {
 
 }
 
-function updatePortfolioRow() {
-	var rowElement = document.getElementById("rj_portfolio_row");
+/* Page Title Updater */
+var callbackTitleUpdater = null;
+var curLenOfTitle = 0;
+function updatePageTitle() {
+	if( curLenOfTitle < (portfolioData.title).length ) {
+		curLenOfTitle++;
+		window.document.title = (portfolioData.title).substr(0, curLenOfTitle);
+	} else {
+		curLenOfTitle = 0;
+		window.document.title = "Smart Portfolio";
+	}
+}
+function portfolioTitleInit() {
+	callbackTitleUpdater = window.setInterval(updatePageTitle, 200);
+}
+
+/* Page Portfolio Highliter */
+var callbackPortfolioHighliter = null;
+var curIndexOfPortfolio = -1;
+function updateHighlightPortfolio() {
 
 	var portfolioProjects = portfolioData.projects;
+
+	if( curIndexOfPortfolio < portfolioProjects.length ) {
+		curIndexOfPortfolio++;
+	} else {
+		curIndexOfPortfolio = 0;
+	}
+
+	var eCur = document.getElementById("rj_blk_" + curIndexOfPortfolio.toString());
+	eCur.setAttribute("style", "background-color:rgba(255,0,0,0.1);");
+	if(curIndexOfPortfolio == 0) {
+		var ePre = document.getElementById("rj_blk_" + (portfolioProjects.length-1).toString());
+		ePre.setAttribute("style", "");
+	} else {
+		var ePre = document.getElementById("rj_blk_" + (curIndexOfPortfolio-1).toString());
+		ePre.setAttribute("style", "");
+	}
+
+}
+function portfolioHighliterInit() {
+	if(callbackPortfolioHighliter == null) {
+		callbackPortfolioHighliter = window.setInterval(updateHighlightPortfolio, 500);
+	}
+}
+function portfolioHighliterClose() {
+	var ePre = document.getElementById("rj_blk_" + (curIndexOfPortfolio).toString());
+	ePre.setAttribute("style", "");
+	window.clearInterval(callbackPortfolioHighliter);
+	callbackPortfolioHighliter = null;
+}
+
+/* Page Portfolio Updater */
+function updatePortfolioRow() {
+	var rowElement = document.getElementById("rj_portfolio_row");
+	var portfolioProjects = portfolioData.projects;
+
+	portfolioTitleInit();
 
 	rowElement.innerHTML = "";
 	for(var projectCount = 0 ; projectCount < portfolioProjects.length ; projectCount++) {
 		var el_div_col = document.createElement("div");
-		el_div_col.className = "col-lg-4";
-			var el_div_col_block = document.createElement("div");
-			el_div_col_block.align = "center";
-			el_div_col_block.setAttribute("onclick", "onClickCallback("+projectCount+")");
-			el_div_col_block.setAttribute("onmouseover", "onHoverInCallback(this)");
-			el_div_col_block.setAttribute("onmouseout", "onHoverOutCallback(this)");
-			el_div_col_block.className = "card mb-4 box-shadow";
-				var el_div_col_img = document.createElement("img");
-				el_div_col_img.src = "/img/loading.gif";
-				el_div_col_img.width = "140";
-				el_div_col_img.height = "140";
-				el_div_col_img.setAttribute("data", portfolioProjects[projectCount].img);
-				el_div_col_img.className = "img img-responsive";
-
-				var el_div_col_body = document.createElement("div");
-				el_div_col_body.className = "card-body";
-
-					var el_div_col_title = document.createElement("h2");
-					el_div_col_title.className = "rj_title";
-					el_div_col_title.innerHTML = portfolioProjects[projectCount].title;
-					var el_div_col_brief = document.createElement("p");
-					el_div_col_brief.className = "card-text";
-					el_div_col_brief.innerHTML = (portfolioProjects[projectCount].brief).substr(0, 50) + "...";
-					
-					el_div_col_body.appendChild(el_div_col_title);
-					el_div_col_body.appendChild(el_div_col_brief);
-
-				el_div_col_block.appendChild(el_div_col_img);
-				el_div_col_block.appendChild(el_div_col_body);
-		el_div_col.appendChild(el_div_col_block);
 		rowElement.appendChild(el_div_col);
+		el_div_col.className = "col-lg-4";
+
+		var el_div_col_block = document.createElement("div");
+		el_div_col.appendChild(el_div_col_block);
+		el_div_col_block.id = "rj_blk_" + projectCount.toString();
+		el_div_col_block.align = "center";
+		el_div_col_block.setAttribute("onclick", "onClickCallback("+projectCount+")");
+		el_div_col_block.setAttribute("onmouseover", "onHoverInCallback(this)");
+		el_div_col_block.setAttribute("onmouseout", "onHoverOutCallback(this)");
+		el_div_col_block.className = "card mb-4 box-shadow";
+
+		var el_div_col_img = document.createElement("img");
+		el_div_col_block.appendChild(el_div_col_img);
+		el_div_col_img.src = "img/loading.gif";
+		el_div_col_img.width = "140";
+		el_div_col_img.height = "140";
+		el_div_col_img.setAttribute("data", portfolioProjects[projectCount].img);
+		el_div_col_img.className = "img img-responsive";
+
+		var el_div_col_body = document.createElement("div");
+		el_div_col_block.appendChild(el_div_col_body);
+		el_div_col_body.className = "card-body";
+
+		var el_div_col_title = document.createElement("h2");
+		el_div_col_body.appendChild(el_div_col_title);
+		el_div_col_title.className = "rj_title";
+		el_div_col_title.innerHTML = portfolioProjects[projectCount].title;
+
+		var el_div_col_brief = document.createElement("p");
+		el_div_col_body.appendChild(el_div_col_brief);
+		el_div_col_brief.className = "card-text";
+		el_div_col_brief.innerHTML = (portfolioProjects[projectCount].brief).substr(0, 50) + "...";
 	}
+
+	portfolioHighliterInit();
 }
 
 loadPortfolio();
