@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Portfolio by Vipul Chasta">
+    <meta name="author" content="VChasta">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+    <title>Admin Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/portfolio.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+  <body>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">BullTronics</h4>
+              <p class="text-muted">Want to show your project on a github hosted website? 
+              Visit https://www.npoint.io and create your portfolio JSON and add your JSON link to portfolio.js file, which is provided with this Portfolio project.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://twitter.com/vipulchasta" class="text-white">Follow on Twitter</a></li>
+                <li><a href="https://facebook.com/vipulchasta" class="text-white">Like on Facebook</a></li>
+                <li><a href="mail:chasta.vipul@gmail.com" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Portfolio</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Project BullTronics</h1>
+          <p>
+            <a href="index.html" class="btn btn-primary my-2">View Portfolio</a>
+            <a id="toggleLink" href="javascript:void(0);" onclick="toggleFunction()" class="btn btn-primary my-2">View Logs</a>
+            <a href="https://Github.com/vipulchasta/BullTronics" class="btn btn-secondary my-2">Browse Source</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Modal: adminLoginModal -->
+      <div class="modal fade" id="adminLoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalTitle">Admin Login</h5>
+            </div>
+            <div class="modal-body" id="exampleModalBody" style="size: 6px; font-family: 'Times New Roman', Times, serif;">
+              
+              <form onsubmit="loadAdminPage()" action="javascript:void(0);">
+                <div class="form-group">
+                  <label for="inputWebsitePassword">Website Password</label>
+                  <input type="password" class="form-control" id="inputWebsitePassword" placeholder="Website Password">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <a id="exampleModalLink" href="index.html" style="text-decoration: none;">
+                <button type="button" class="btn btn-primary">Exit</button>
+              </a>
+              <a id="exampleModalLink" href="#" style="text-decoration: none;" onclick="loadAdminPage()">
+                <button type="button" class="btn btn-primary">Login</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal: adminUpdateConfirmationModal -->
+      <div class="modal fade" id="adminUpdateConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalTitle">Update Confirmation Password</h5>
+            </div>
+            <div class="modal-body" id="exampleModalBody" style="size: 6px; font-family: 'Times New Roman', Times, serif;">
+              
+              <form onsubmit="updateWebsiteData()" action="javascript:void(0);">
+                <div class="form-group">
+                  <label for="inputWebsiteUpdateConfirmationPassword">Admin Password</label>
+                  <input type="password" class="form-control" id="inputWebsiteUpdateConfirmationPassword" placeholder="Admin Password">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <a id="exampleModalLink" href="#" style="text-decoration: none;" onclick="updateWebsiteData()">
+                <button type="button" class="btn btn-primary">Update</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal: portfolioModal -->
+      <div class="modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Portfolio</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="size: 6px; font-family: 'Times New Roman', Times, serif;">
+              <form onsubmit="updatePortfolioData()" action="javascript:void(0);">
+                <input type="hidden" id="inputPortFolioIndex">
+                <div class="form-group">
+                  <label for="inputPortFolioTitle">Portfolio Title</label>
+                  <input type="text" class="form-control" id="inputPortFolioTitle" placeholder="Portfolio Title">
+                </div>
+                <div class="form-group">
+                  <label for="inputPortFolioBrief">Portfolio Brief</label>
+                  <input type="text" class="form-control" id="inputPortFolioBrief" placeholder="Portfolio Brief">
+                </div>
+                <div class="form-group">
+                  <label for="inputPortFolioImageLink">Portfolio Image Link</label>
+                  <input type="text" class="form-control" id="inputPortFolioImageLink" placeholder="Portfolio Image Link">
+                </div>
+                <div class="form-group">
+                  <label for="inputPortFolioProjectLink">Portfolio Project Link</label>
+                  <input type="text" class="form-control" id="inputPortFolioProjectLink" placeholder="Portfolio Project Link">
+                </div>
+                <div class="form-group">
+                  <label for="inputPortFolioProjectDetail">Portfolio Project Detail</label>
+                  <textarea class="form-control" id="inputPortFolioProjectDetail" placeholder="Portfolio Project Detail">
+                  </textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a href="javascript:void(0);" style="text-decoration: none;" onclick="removePortfolio()">
+                <button type="button" class="btn btn-danger">Delete</button>
+              </a>
+              <a href="javascript:void(0);" style="text-decoration: none;" onclick="updatePortfolioData()">
+                <button type="button" class="btn btn-primary">Update</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+      <div class="py-5 bg-light">
+        <div class="container">
+          <!-- Three columns of text below the carousel -->
+          <div id="adminPageModifyForm" class="row" hidden="">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <form onsubmit="updateWebsiteDataConfirmation()" action="javascript:void(0);">
+                <div class="form-group">
+                  <label for="inputWebsiteTitle">Website Title</label>
+                  <input type="text" class="form-control" id="inputWebsiteTitle" placeholder="Website Title">
+                </div>
+                <div class="form-group">
+                  <label for="inputWebsiteAuthor">Website Author</label>
+                  <input type="text" class="form-control" id="inputWebsiteAuthor" placeholder="Website Author">
+                </div>
+                <div class="form-group">
+                  <label for="inputWebsiteDescription">Website Description</label>
+                  <input type="text" class="form-control" id="inputWebsiteDescription" placeholder="Website Description">
+                </div>
+                <div class="form-group">
+                  <label for="inputWebsitePortfolio">Website Portfolio</label>
+                  <div class="row" id="portfolioList">
+                    
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </form>
+            </div>
+            <div class="col-md-3"></div>
+          </div><!-- /.row -->
+
+          <!-- Logs Row -->
+          <div id="logsListBlock" class="row" hidden="">
+            <div class="col-md-12">
+              <div class="card mb-4 box-shadow" style="height:100%;">
+                <div class="card-body">
+                  <h2>Last Access Logs</h3>
+                  <p id="accessLogs" class="card-text"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="adminPageModifyFormLoader" class="row">
+            <div class="col-md-12" align="center">
+              <img src="img/loading.gif" alt="loading" />
+            </div>
+          </div>
+        </div><!-- /.container -->
+      </div>
+      <!-- FOOTER -->
+      <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>Portfolio Template &copy; BullTronics, you can clone/fork it and customize it for yourself!</p>
+          <p>BullTronics Portfolio <a href="https://Github.com/vipulchasta/BullTronics">GitHub</a></p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="js/framework.js"></script>-->
+    <script src="js/admin.js"></script>
+  </body>
+</html>

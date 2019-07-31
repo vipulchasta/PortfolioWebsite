@@ -1,4 +1,8 @@
-var JSON_DATA_LINK = "https://api.npoint.io/ce2b40258895192b5982";
+var JSON_DATA_LINK = "https://shop.BullTronics.com/SrvHosting";
+var JSON_DATA_ID = "5d3f4b82d1c7ae038bb112e4";
+var JSON_DATA_OPERATION = "GET_DATA";
+var JSON_DATA_READ_KEY = "HJDYGH3UU";
+
 var portfolioData = null;
 
 function loadPortfolio() {
@@ -9,12 +13,14 @@ function loadPortfolio() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200) {
 
-			portfolioData = JSON.parse(this.responseText);
+			// Handle response message
+			portfolioData = JSON.parse(this.responseText).data;
 			updatePortfolioRow();
 		}
 	}
 
-	xhttp.open("GET", JSON_DATA_LINK, true);
+	var hostLink = JSON_DATA_LINK+"?id="+JSON_DATA_ID+"&operation="+JSON_DATA_OPERATION+"&key="+JSON_DATA_READ_KEY;
+	xhttp.open("GET", hostLink, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send();
 }
@@ -30,10 +36,10 @@ function onHoverInCallback(e) {
 }
 
 function onClickCallback(indexPortfolio) {
-	$("#exampleModalCenter").modal();
-	var modal_title = document.getElementById("exampleModalTitle");
-	var modal_body = document.getElementById("exampleModalBody");
-	var modal_link = document.getElementById("exampleModalLink");
+	$("#portfolioDetailModal").modal();
+	var modal_title = document.getElementById("portfolioDetailModalTitle");
+	var modal_body = document.getElementById("portfolioDetailModalBody");
+	var modal_link = document.getElementById("portfolioDetailModalLink");
 
 	var portfolioProjects = portfolioData.projects;
 	modal_title.innerHTML = portfolioProjects[indexPortfolio].title;
@@ -141,7 +147,5 @@ function updatePortfolioRow() {
 
 	portfolioHighliterInit();
 }
-
-loadPortfolio();
 
 // Fill data of rj_elements

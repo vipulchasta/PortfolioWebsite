@@ -76,34 +76,35 @@
           <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
           <p>
             <a href="#rj_portfolio_row" class="btn btn-primary my-2">View Portfolio</a>
+            <a href="admin.html" class="btn btn-primary my-2">Manage Portfolio</a>
             <a href="https://Github.com/vipulchasta/BullTronics" class="btn btn-secondary my-2">Browse Source</a>
           </p>
         </div>
       </section>
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="portfolioDetailModal" tabindex="-1" role="dialog" aria-labelledby="portfolioDetailModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalTitle">Modal title</h5>
+              <h5 class="modal-title" id="portfolioDetailModalTitle">Modal title</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" id="exampleModalBody" style="size: 6px; font-family: 'Times New Roman', Times, serif;">
+            <div class="modal-body" id="portfolioDetailModalBody" style="size: 6px; font-family: 'Times New Roman', Times, serif;">
               ...
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <a id="exampleModalLink" href="#" style="text-decoration: none;"><button type="button" class="btn btn-primary">Experience It</button></a>
+              <a id="portfolioDetailModalLink" href="#" style="text-decoration: none;"><button type="button" class="btn btn-primary">Experience It</button></a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Wrap the rest of the page in another container to center all the content. -->
-      <div class="album py-5 bg-light">
+      <div class="py-5 bg-light">
         <div class="container">
           <!-- Three columns of text below the carousel -->
           <div id="rj_portfolio_row" class="row">
@@ -139,5 +140,8 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/framework.js"></script>
     <script src="js/portfolio.js"></script>
+    <script type="text/javascript">
+      loadPortfolio();
+    </script>
   </body>
 </html>
