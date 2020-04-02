@@ -1,4 +1,4 @@
-var JSON_DATA_LINK = "https://shop.BullTronics.com/SrvHosting";
+var JSON_DATA_LINK = "https://BullTronics.com/Hosting";
 var JSON_DATA_ID = "5d3f4b82d1c7ae038bb112e4";
 var JSON_DATA_OPERATION = "GET_DATA";
 var JSON_DATA_READ_KEY = "HJDYGH3UU";
@@ -19,7 +19,7 @@ function loadPortfolio() {
 		}
 	}
 
-	var hostLink = JSON_DATA_LINK+"?id="+JSON_DATA_ID+"&operation="+JSON_DATA_OPERATION+"&key="+JSON_DATA_READ_KEY;
+	var hostLink = JSON_DATA_LINK+"?id="+JSON_DATA_ID+"&action="+JSON_DATA_OPERATION+"&key="+JSON_DATA_READ_KEY;
 	xhttp.open("GET", hostLink, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send();
