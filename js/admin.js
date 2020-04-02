@@ -1,5 +1,5 @@
-var JSON_DATA_LINK = "https://shop.BullTronics.com/SrvHosting";
-var JSON_ADMIN_DATA_OPERATION = "GET_ADMIN_DATA";
+var JSON_DATA_LINK = "https://shop.BullTronics.com/Hosting";
+var JSON_ADMIN_DATA_OPERATION = "GET_DATA_ALL";
 var JSON_DATA_UPDATE_OPERATION = "UPDATE_DATA";
 var JSON_DATA_ID = "5d3f4b82d1c7ae038bb112e4";
 
@@ -163,7 +163,7 @@ function initAdmin( adminKey ) {
 		}
 	}
 
-	var hostLink = JSON_DATA_LINK+"?id="+JSON_DATA_ID+"&operation="+JSON_ADMIN_DATA_OPERATION+"&key="+adminKey;
+	var hostLink = JSON_DATA_LINK+"/"+JSON_DATA_ID+"&action="+JSON_ADMIN_DATA_OPERATION+"&key="+adminKey;
 	xhttp.open("GET", hostLink, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send();
@@ -211,8 +211,8 @@ function updatePageAdmin( adminKey ) {
 	pageData.description = eleInputWebsiteDescription.value;
 
 	var newData = encodeURIComponent( JSON.stringify(pageData) );
-	var postData = "id="+JSON_DATA_ID+"&operation="+JSON_DATA_UPDATE_OPERATION+"&key="+adminKey+"&data="+newData;
-	xhttp.open("POST", JSON_DATA_LINK, true);
+	var postData = "actions="+JSON_DATA_UPDATE_OPERATION+"&key="+adminKey+"&data="+newData;
+	xhttp.open("POST", JSON_DATA_LINK+"/"+JSON_DATA_ID, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(postData);
 }
