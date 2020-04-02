@@ -19,7 +19,7 @@ function loadPortfolio() {
 		}
 	}
 
-	var hostLink = JSON_DATA_LINK+"?id="+JSON_DATA_ID+"&action="+JSON_DATA_OPERATION+"&key="+JSON_DATA_READ_KEY;
+	var hostLink = JSON_DATA_LINK+"/"+JSON_DATA_ID+"&action="+JSON_DATA_OPERATION+"&key="+JSON_DATA_READ_KEY;
 	xhttp.open("GET", hostLink, true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send();
